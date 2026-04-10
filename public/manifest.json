@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Knowledge Check Quiz Generator",
+  "description": "Generate AI-powered MCQ quizzes from educational webpages and track progress over time.",
+  "version": "1.0.0",
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Knowledge Check Quiz",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
